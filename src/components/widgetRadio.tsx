@@ -62,7 +62,7 @@ const WidgetRadio = () => {
 
   return (
     <div
-      className="flex flex-col justify-start items-start w-full max-w-[754px] relative overflow-hidden rounded-xl font-montserrat backdrop-blur-[80px]"
+      className="flex flex-col justify-start items-start w-full max-w-[754px] relative overflow-clip rounded-xl font-montserrat backdrop-blur-[80px]"
       style={{
         boxShadow: "0px 0px 80px 0 rgba(121,121,121,0.14)",
         fontFamily: "'Montserrat', sans-serif",
@@ -203,17 +203,16 @@ const WidgetRadio = () => {
       <div className="flex justify-between flex-wrap self-stretch flex-grow-0 flex-shrink-0 z-10">
         {/* radio / en vivo */}
         <div className="flex justify-center flex-grow-0 flex-shrink-0 h-[142px] relative gap-6 p-7">
-          <div className="flex flex-col justify-center items-start flex-grow-0 flex-shrink-0 relative gap-2">
-            <p className="flex-grow-0 text-center flex-shrink-0 text-[51px] font-bold tracking-[2.23px] leading-[33.27px] uppercase text-white">
+          <div className="flex flex-col justify-center items-start flex-grow-0 w-fit flex-shrink-0 relative gap-2">
+            <p className="flex-grow-0 text-center flex-shrink-0 text-[38px] min-[420px]:text-[51px] font-bold tracking-[2.23px] leading-[33.27px] uppercase text-white">
               Radio
             </p>
-            <p className="flex-grow-0 text-center flex-shrink-0 text-[31px] w-[196px] font-extrabold tracking-[2.23px] leading-[33.27px] text-white uppercase">
-              {" "}
+            <p className="flex-grow-0 text-center flex-shrink-0 text-[22px] min-[420px]:text-[31px] max-w-[196px] font-extrabold tracking-[2.23px] leading-[33.27px] text-white uppercase">
               {station === "zero" ? "Zero 94.5" : "Like 89.7"}
             </p>
           </div>
 
-          <div className="self-stretch flex-grow-0 flex-shrink-0 w-[3px] rounded-[5.48px] bg-white"></div>
+          <div className="self-stretch flex-grow-0 flex-shrink-0 w-[3px] rounded-[5.48px] bg-white max-h-[86px]"></div>
 
           <div className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[116px] relative gap-[7px] pt-1.5">
             <svg
@@ -240,133 +239,131 @@ const WidgetRadio = () => {
           </div>
         </div>
 
-                 {/* Play button */}
-         <button
-           onClick={handlePlayPause}
-           className="flex justify-center items-center mt-[78px] sm:mr-[60px] mx-auto w-[140px] h-[140px] sm:w-[105px] sm:h-[105px] rounded-full shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer"
-           style={{
-             background: "linear-gradient(135deg, #FF543C 0%, #FF3C3D 100%)",
-           }}
-           aria-label={isPlaying ? "Pausar" : "Reproducir"}
-         >
-                     {/* Play icon */}
-           <div className="ml-2 sm:ml-2">
-             <svg
-               width="55"
-               height="62"
-               viewBox="0 0 41 46"
-               fill="none"
-               xmlns="http://www.w3.org/2000/svg"
-               className="sm:w-[41px] sm:h-[46px]"
-             >
-               <path
-                 d="M38.706 19.503c2.743 1.524 2.743 5.47 0 6.994L5.943 44.699C3.276 46.179 0 44.252 0 41.202V4.798C0 1.748 3.276-.18 5.943 1.301z"
-                 fill="#fff"
-               />
-             </svg>
-           </div>
+        {/* Play button */}
+        <button
+          onClick={handlePlayPause}
+          className="flex justify-center items-center mt-[78px] sm:mr-[60px] mx-auto w-[140px] h-[140px] sm:w-[105px] sm:h-[105px] rounded-full shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer"
+          style={{
+            background: "linear-gradient(135deg, #FF543C 0%, #FF3C3D 100%)",
+          }}
+          aria-label={isPlaying ? "Pausar" : "Reproducir"}
+        >
+          {/* Play icon */}
+          <div className="ml-2 sm:ml-2">
+            <svg
+              width="55"
+              height="62"
+              viewBox="0 0 41 46"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="sm:w-[41px] sm:h-[46px]"
+            >
+              <path
+                d="M38.706 19.503c2.743 1.524 2.743 5.47 0 6.994L5.943 44.699C3.276 46.179 0 44.252 0 41.202V4.798C0 1.748 3.276-.18 5.943 1.301z"
+                fill="#fff"
+              />
+            </svg>
+          </div>
         </button>
       </div>
 
-             {/* Bottom section with station buttons and volume */}
-       <div className="flex flex-col md:flex-row justify-between items-center self-stretch flex-grow-0 flex-shrink-0 z-10 gap-8 sm:gap-6 p-8 sm:p-7">
-         {/* station select */}
-         <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center flex-grow-0 gap-4 sm:gap-6 order-2 md:order-1">
-           <button
-             onClick={() => changeStation("zero")}
-             className={`flex justify-center items-center flex-grow-0 flex-shrink-0 tracking-[2.23px] leading-[26px] relative px-3 py-2 rounded-[8.65px] border-[0.72px] transition-all duration-200 ${
-               station === "zero"
-                 ? "bg-white/20 border-white/50"
-                 : "bg-white/[0.12] border-white/30 hover:bg-white/25"
-             }`}
-           >
-             <p className="flex-grow-0 flex-shrink-0 text-[24px] sm:text-[28px] font-bold text-center uppercase text-white">
-               zero 94.5
-             </p>
-           </button>
+      {/* Bottom section with station buttons and volume */}
+      <div className="flex flex-col md:flex-row justify-between items-center self-stretch flex-grow-0 flex-shrink-0 z-10 gap-8 sm:gap-6 p-8 sm:p-7">
+        {/* station select */}
+        <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center flex-grow-0 gap-4 sm:gap-6 order-2 md:order-1 w-full">
+          <button
+            onClick={() => changeStation("zero")}
+            className={`flex justify-center items-center flex-grow-0 flex-shrink-0 tracking-[2.23px] leading-[26px] relative px-5 py-3 sm:px-3 sm:py-2 rounded-[8.65px] border-[0.72px] transition-all duration-200 w-full sm:w-auto ${
+              station === "zero"
+          ? "bg-white/20 border-white/50"
+          : "bg-white/[0.12] border-white/30 hover:bg-white/25"
+            }`}
+          >
+            <p className="flex-grow-0 flex-shrink-0 text-[24px] sm:text-[28px] font-bold text-center uppercase text-white">
+              zero 94.5
+            </p>
+          </button>
 
-           <button
-             onClick={() => changeStation("like")}
-             className={`flex justify-center items-center flex-grow-0 flex-shrink-0 tracking-[2.23px] leading-[26px] relative px-3 py-2 rounded-[8.65px] border-[0.72px] transition-all duration-200 ${
-               station === "like"
-                 ? "bg-white/20 border-white/50"
-                 : "bg-white/[0.12] border-white/30 hover:bg-white/25"
-             }`}
-           >
-             <p className="flex-grow-0 flex-shrink-0 text-[24px] sm:text-[28px] font-bold text-center uppercase text-white">
-               like 89.7
-             </p>
-           </button>
-         </div>
+          <button
+            onClick={() => changeStation("like")}
+            className={`flex justify-center items-center flex-grow-0 flex-shrink-0 tracking-[2.23px] leading-[26px] relative px-5 py-3 sm:px-3 sm:py-2 rounded-[8.65px] border-[0.72px] transition-all duration-200 w-full sm:w-auto ${
+              station === "like"
+          ? "bg-white/20 border-white/50"
+          : "bg-white/[0.12] border-white/30 hover:bg-white/25"
+            }`}
+          >
+            <p className="flex-grow-0 flex-shrink-0 text-[24px] sm:text-[28px] font-bold text-center uppercase text-white">
+              like 89.7
+            </p>
+          </button>
+        </div>
 
-         {/* Volume controls */}
-         <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-4 sm:gap-2.5 px-6 sm:px-7 order-1 md:order-2">
-           <button
-             onClick={handleMuted}
-             className="p-1 text-white hover:bg-white/10 rounded transition-colors"
-             aria-label={isMuted ? "Activar sonido" : "Silenciar"}
-           >
-             {isMuted ? (
-               <svg
-                 width="22"
-                 height="16"
-                 viewBox="0 0 22 16"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                 <path
-                   d="M13.9873 4.81366C14.831 5.65763 15.305 6.80213 15.305 7.9955C15.305 9.18887 14.831 10.3334 13.9873 11.1773M17.1646 1.63632C18.852 3.32425 19.8 5.61327 19.8 8C19.8 10.3867 18.852 12.6758 17.1646 14.3637M9.90085 1.69933L5.40037 5.29971H1.79999V10.7003H5.40037L9.90085 14.3007V1.69933Z"
-                   stroke="white"
-                   strokeWidth="2.5"
-                   strokeLinecap="round"
-                   strokeLinejoin="round"
-                 />
-                 <rect
-                   x="0.484324"
-                   y="12.6334"
-                   width="22.3445"
-                   height="3.5"
-                   rx="1.75"
-                   transform="rotate(-33.09 0.484324 12.6334)"
-                   fill="#D9D9D9"
-                   stroke="#B3372A"
-                 />
-               </svg>
-             ) : (
-               <svg
-                 xmlns="http://www.w3.org/2000/svg"
-                 width="22"
-                 height="16"
-                 viewBox="0 0 22 16"
-                 fill="none"
-               >
-                 <path
-                   d="M14.1873 4.81366C15.031 5.65763 15.505 6.80213 15.505 7.9955C15.505 9.18887 15.031 10.3334 14.1873 11.1773M17.3646 1.63632C19.0521 3.32425 20 5.61327 20 8C20 10.3867 19.0521 12.6758 17.3646 14.3637M10.1009 1.69933L5.60038 5.29971H2V10.7003H5.60038L10.1009 14.3007V1.69933Z"
-                   stroke="white"
-                   strokeWidth="2.5"
-                   strokeLinecap="round"
-                   strokeLinejoin="round"
-                 />
-               </svg>
-             )}
-           </button>
-           <input
-             type="range"
-             min="0"
-             max="1"
-             step="0.0001"
-             value={volume}
-             onInput={handleVolumeChange}
-             className="widgetRadio_volume"
-             style={{
-               appearance: "none",
-               borderRadius: "50px",
-               height: "6px",
-               width: "100%",
-               maxWidth: "280px",
-               background: "#e5e5e5",
-             }}
-           />
+        {/* Volume controls */}
+        <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-4 sm:gap-2.5 px-0 sm:px-7 order-1 md:order-2 w-full sm:w-auto">
+          <button
+            onClick={handleMuted}
+            className="p-1 text-white hover:bg-white/10 rounded transition-colors"
+            aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+          >
+            {isMuted ? (
+              <svg
+                width="22"
+                height="16"
+                viewBox="0 0 22 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.9873 4.81366C14.831 5.65763 15.305 6.80213 15.305 7.9955C15.305 9.18887 14.831 10.3334 13.9873 11.1773M17.1646 1.63632C18.852 3.32425 19.8 5.61327 19.8 8C19.8 10.3867 18.852 12.6758 17.1646 14.3637M9.90085 1.69933L5.40037 5.29971H1.79999V10.7003H5.40037L9.90085 14.3007V1.69933Z"
+                  stroke="white"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <rect
+                  x="0.484324"
+                  y="12.6334"
+                  width="22.3445"
+                  height="3.5"
+                  rx="1.75"
+                  transform="rotate(-33.09 0.484324 12.6334)"
+                  fill="#D9D9D9"
+                  stroke="#B3372A"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="16"
+                viewBox="0 0 22 16"
+                fill="none"
+              >
+                <path
+                  d="M14.1873 4.81366C15.031 5.65763 15.505 6.80213 15.505 7.9955C15.505 9.18887 15.031 10.3334 14.1873 11.1773M17.3646 1.63632C19.0521 3.32425 20 5.61327 20 8C20 10.3867 19.0521 12.6758 17.3646 14.3637M10.1009 1.69933L5.60038 5.29971H2V10.7003H5.60038L10.1009 14.3007V1.69933Z"
+                  stroke="white"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+          </button>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.0001"
+            value={volume}
+            onInput={handleVolumeChange}
+            className="widgetRadio_volume w-full max-w-[280px] sm:max-w-[280px]"
+            style={{
+              appearance: "none",
+              borderRadius: "50px",
+              height: "6px",
+              background: "#e5e5e5",
+            }}
+          />
           <style jsx>{`
             .widgetRadio_volume::-webkit-slider-thumb {
               appearance: none;

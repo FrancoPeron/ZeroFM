@@ -18,16 +18,21 @@ const TVPlayer = () => {
   }, []);
 
   return (
-    <div className="aspect-video max-w-[754px]">
-      <video
-        ref={videoRef}
-        controls
-        width="100%"
-        height="auto"
-        className="rounded-xl"
-      >
-        Tu navegador no soporta la reproducción de video.
-      </video>
+    <div className="w-full max-w-[754px] p-2 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
+      <div className="aspect-video w-full overflow-hidden rounded-xl bg-black/50">
+        <video
+          ref={videoRef}
+          controls
+          className="w-full h-full"
+          style={{
+            minWidth: '100%',
+            minHeight: '100%',
+            aspectRatio: '16/9'
+          }}
+        >
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
     </div>
   );
 };
