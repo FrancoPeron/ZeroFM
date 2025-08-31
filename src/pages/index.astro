@@ -1,0 +1,12 @@
+---
+import Layout from '../layout/Layout.astro';
+import TVPlayer from '../components/TVPlayer';
+import WidgetRadio from '../components/widgetRadio';
+---
+
+<Layout>
+  <div class="fondo gap-8">
+    <WidgetRadio client:only="preact" />
+    <TVPlayer client:only="preact" />
+  </div>
+</Layout>
