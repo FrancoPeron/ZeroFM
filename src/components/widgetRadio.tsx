@@ -248,22 +248,42 @@ const WidgetRadio = () => {
           }}
           aria-label={isPlaying ? "Pausar" : "Reproducir"}
         >
-          {/* Play icon */}
-          <div className="ml-2 sm:ml-2">
-            <svg
-              width="55"
-              height="62"
-              viewBox="0 0 41 46"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="sm:w-[41px] sm:h-[46px]"
-            >
-              <path
-                d="M38.706 19.503c2.743 1.524 2.743 5.47 0 6.994L5.943 44.699C3.276 46.179 0 44.252 0 41.202V4.798C0 1.748 3.276-.18 5.943 1.301z"
-                fill="#fff"
-              />
-            </svg>
-          </div>
+          {/* Play/Pause icon */}
+         
+            {isPlaying ? (
+              <svg
+                width="41"
+                height="46"
+                viewBox="0 0 18 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="sm:w-[41px] sm:h-[46px]"
+              >
+                <path
+                  d="M0 2.5C0 1.39543 0.895431 0.5 2 0.5H4C5.10457 0.5 6 1.39543 6 2.5V19.5C6 20.6046 5.10457 21.5 4 21.5H2C0.89543 21.5 0 20.6046 0 19.5V2.5Z"
+                  fill="white"
+                />
+                <path
+                  d="M12 2.5C12 1.39543 12.8954 0.5 14 0.5H16C17.1046 0.5 18 1.39543 18 2.5V19.5C18 20.6046 17.1046 21.5 16 21.5H14C12.8954 21.5 12 20.6046 12 19.5V2.5Z"
+                  fill="white"
+                />
+              </svg>
+            ) : (
+              <svg
+                width="55"
+                height="62"
+                viewBox="0 0 41 46"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="sm:w-[41px] sm:h-[46px] ml-1"
+              >
+                <path
+                  d="M38.706 19.503c2.743 1.524 2.743 5.47 0 6.994L5.943 44.699C3.276 46.179 0 44.252 0 41.202V4.798C0 1.748 3.276-.18 5.943 1.301z"
+                  fill="#fff"
+                />
+              </svg>
+            )}
+         
         </button>
       </div>
 
